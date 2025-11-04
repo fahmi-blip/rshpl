@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $table = 'user';
     protected $primary = 'iduser';
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
     ];
@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
     public function roleUser()
     {
-        return $this->hasOne(RoleUser::class, 'iduser', 'iduser');
+        return $this->hasMany(RoleUser::class, 'iduser', 'iduser');
     }
     public function pet()
     {

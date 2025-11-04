@@ -11,7 +11,7 @@ class PemilikController extends Controller
 {
     public function index()
     {
-        $pemilik = Pemilik::all();
+        $pemilik = Pemilik::with('user')->get();
         return view('admin.pemilik.index', compact('pemilik'));
     }
 }

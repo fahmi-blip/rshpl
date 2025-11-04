@@ -204,64 +204,31 @@ td a.delete-btn:hover {
         <aside class="sidebar">
           <h2 class="sidebar-logo">RSHP</h2>
           <ul class="sidebar-menu">
-            <li><a href="{{ route('admin.dashboard') }}" >Dashboard</a></li>
-                <li><a href="{{ route('admin.jenis-hewan.index') }}" >Jenis Hewan</a></li>
-                <li><a href="{{ route('admin.pemilik.index') }}" >Pemilik</a></li>
-                <li><a href="{{ route('admin.ras-hewan.index') }}" class="active">Ras Hewan</a></li>
-                <li><a href="{{ route('admin.kategori.index') }}" >Kategori</a></li>
-                <li><a href="{{ route('admin.kategori-klinis.index') }}" >Kategori Klinis</a></li>
+            <li><a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a></li>
+                <li><a href="{{ route('admin.jenis-hewan.index') }}">Jenis Hewan</a></li>
+                <li><a href="{{ route('admin.pemilik.index') }}">Pemilik</a></li>
+                <li><a href="{{ route('admin.ras-hewan.index') }}">Ras Hewan</a></li>
+                <li><a href="{{ route('admin.kategori.index') }}">Kategori</a></li>
+                <li><a href="{{ route('admin.kategori-klinis.index') }}">Kategori Klinis</a></li>
                 <li><a href="{{ route('admin.tindakan-terapi.index') }}">Tindakan & Terapi</a></li>
                 <li><a href="{{ route('admin.user.index') }}">Manajemen User</a></li>
                 <li><a href="{{ route('admin.role.index') }}">Manajemen Role</a></li>
-                <li><a href="{{ route('admin.pet.index') }}" >Data Hewan Peliharaan</a></li>
+                <li><a href="{{ route('admin.pet.index') }}">Data Hewan Peliharaan</a></li>
                 <li><a href="{{ route('admin.role-user.index') }}">Penetapan Role User</a></li>
                 <li><a href="logout.php" class="logout-btn">Logout</a></li>
           </ul>
         </aside>
         <main class="main-content">
           <header class="main-header">
-            <h1>Daftar Ras Hewan</h1>
+            <h1>Selamat Datang di Dashboard Admin</h1>
           </header>
-          
-        
-    <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama Ras</th>
-                <th>Jenis Hewan</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (!empty($rasHewan))
-                @foreach ($rasHewan as $index => $ras)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $ras -> nama_ras }}</td>
-                        <td>{{ $ras ->jenisHewan-> nama_jenis_hewan }}</td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="3" style="text-align:center;">Tidak ada data jenis hewan.</td>
-                </tr>
-             @endif
-        </tbody>
-    </table>
-
-
-
+    
+          <section class="content">
+            <h2>Selamat Datang di RSHP Dashboard</h2>
+            <p>Pilih menu di sidebar untuk mengelola data.</p>
+          </section>
         </main>
       </div>
     </div>
 </body>
 </html>
-    
-
-
-    
-    
-
-
-
-    
