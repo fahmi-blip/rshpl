@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class isResepsionis
+class isPerawat
 {
     /**
      * Handle an incoming request.
@@ -16,15 +16,20 @@ class isResepsionis
      */
     public function handle(Request $request, Closure $next): Response
     {
-       if (!Auth::check()) {
+        if (!Auth::check()) {
+            // Jika BELUM login, redirect ke halaman login
             return redirect()->route('login');
         }
 
+        // 2. Jika sudah login, cek rolenya
+        // Ambil role dari session yang disimpan saat login
         $userRole = session('user_role');
-        
-        if ($userRole == 4) {
+
+        // 3. Bandingkan dengan role yang diizinkan (misal: 1 untuk Administrator)
+        // Pastikan nilai '1' ini sesuai dengan idrole di database Anda
+        if ($userRole == 3) {
             return $next($request);
-        } else {
+        }else{
             return back()->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
     }

@@ -205,22 +205,15 @@ td a.delete-btn:hover {
           <h2 class="sidebar-logo">RSHP</h2>
           <ul class="sidebar-menu">
             <li><a href="{{ route('resepsionis.dashboard') }}" class="active">Dashboard</a></li>
-                <li><a href="{{ route('admin.jenis-hewan.index') }}">Jenis Hewan</a></li>
-                {{-- <li><a href="{{ route('admin.pemilik.index') }}">Pemilik</a></li>
-                <li><a href="{{ route('admin.ras-hewan.index') }}">Ras Hewan</a></li>
-                <li><a href="{{ route('admin.kategori.index') }}">Kategori</a></li>
-                <li><a href="{{ route('admin.kategori-klinis.index') }}">Kategori Klinis</a></li>
-                <li><a href="{{ route('admin.tindakan-terapi.index') }}">Tindakan & Terapi</a></li>
-                <li><a href="{{ route('admin.user.index') }}">Manajemen User</a></li>
-                <li><a href="{{ route('admin.role.index') }}">Manajemen Role</a></li>
-                <li><a href="{{ route('admin.pet.index') }}">Data Hewan Peliharaan</a></li>
-                <li><a href="{{ route('admin.role-user.index') }}">Penetapan Role User</a></li>
-                <li><a href="{{ route('login') }}"" class="logout-btn">Logout</a></li> --}}
+                <li><a href="{{ route('resepsionis.registrasi.pemilik') }}">Registrasi Pemilik</a></li>
+                <li><a href="{{ route('resepsionis.registrasi.pet') }}">Registrasi Pet</a></li>
+                <li><a href="{{ route('resepsionis.registrasi.temudokter') }}">Registrasi Temu Dokter</a></li>
+                <li><a href="{{ route('login') }}" class="logout-btn">Logout</a></li>
           </ul>
         </aside>
         <main class="main-content">
           <header class="main-header">
-            <h1>Selamat Datang di Dashboard Admin</h1>
+            </h1>Selamat datang di Dashboard  {{  session('user_role_name') }}</h1>
           </header>
     
           <section class="content">

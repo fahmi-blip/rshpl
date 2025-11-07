@@ -215,37 +215,50 @@ td a.delete-btn:hover {
                 <li><a href="{{ route('admin.role.index') }}">Manajemen Role</a></li>
                 <li><a href="{{ route('admin.pet.index') }}">Data Hewan Peliharaan</a></li>
                 <li><a href="{{ route('admin.role-user.index') }}">Penetapan Role User</a></li>
-                <li><a href="logout.php" class="logout-btn">Logout</a></li>
+                <li><a href="{{ route('login') }}" class="logout-btn">Logout</a></li>
           </ul>
         </aside>
         <main class="main-content">
           <header class="main-header">
             <h1>Daftar Jenis Hewan</h1>
           </header>
-    
-          
+          <div>
+            <form action="{{ route('admin.jenis-hewan.create') }}" method="GET" style="display: inline;">
+              <button type="submit" class="btn-add">
+                Tambah Jenis Hewan
+              </button>
+            </form>
+        </div>
+        
           <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nama Jenis</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @if (!empty($jenisHewan))
                 @foreach ($jenisHewan as $index => $hewan)
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $hewan -> nama_jenis_hewan }}</td>
+                        <td>
+                          <button type="submit" class="btn-add">
+                            Edit
+                          </button>
+                          <button type="submit" class="btn-add">
+                            Hapus
+                          </button>
+                          <form id="delete-form-{{ $hewan->idjenis_hewan }}" action="#" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                          </form>
+                        </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td colspan="3" style="text-align:center;">Tidak ada data jenis hewan.</td>
-                </tr>
-             @endif
         </tbody>
-    </table>
+            </table>
         </main>
       </div>
     </div>

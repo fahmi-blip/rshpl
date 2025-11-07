@@ -1,7 +1,4 @@
-@extends('layouts.app')
 
-
-@section('content')
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -236,4 +233,3 @@ td a.delete-btn:hover {
     </div>
 </body>
 </html>
-@endsection

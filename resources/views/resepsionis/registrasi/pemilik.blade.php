@@ -2,10 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrasi Pemilik</title>
     <style>
-            * {
+    * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -136,6 +135,93 @@ th {
     background: linear-gradient(135deg, #0056b3, #004080);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
+.form-user input[type="text"],
+.form-user input[type="email"],
+.form-user input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-user input[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form-user input[type="submit"]:hover {
+    background: linear-gradient(135deg, #0056b3, #004080);
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-container h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.form-container label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #34495e;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.form-container button:hover {
+    background: linear-gradient(135deg, #0056b3, #004080);
+}
 td a {
     display: inline-block;
     margin: 6px 4px;
@@ -172,6 +258,7 @@ td a.delete-btn:hover {
 }
 
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .sidebar {
     width: 200px;
@@ -200,70 +287,47 @@ td a.delete-btn:hover {
     </style>
 </head>
 <body>
+    <div>
     <div class="dashboard-container">
         <aside class="sidebar">
           <h2 class="sidebar-logo">RSHP</h2>
           <ul class="sidebar-menu">
-            <li><a href="{{ route('admin.dashboard') }}" >Dashboard</a></li>
-                <li><a href="{{ route('admin.jenis-hewan.index') }}" >Jenis Hewan</a></li>
-                <li><a href="{{ route('admin.pemilik.index') }}" >Pemilik</a></li>
-                <li><a href="{{ route('admin.ras-hewan.index') }}" >Ras Hewan</a></li>
-                <li><a href="{{ route('admin.kategori.index') }}" >Kategori</a></li>
-                <li><a href="{{ route('admin.kategori-klinis.index') }}" >Kategori Klinis</a></li>
-                <li><a href="{{ route('admin.tindakan-terapi.index') }}">Tindakan & Terapi</a></li>
-                <li><a href="{{ route('admin.user.index') }}">Manajemen User</a></li>
-                <li><a href="{{ route('admin.role.index') }}" >Manajemen Role</a></li>
-                <li><a href="{{ route('admin.pet.index') }}" >Data Hewan Peliharaan</a></li>
-                <li><a href="{{ route('admin.role-user.index') }}" class="active">Penetapan Role User</a></li>
+            <li><a href="{{ route('resepsionis.dashboard') }}" >Dashboard</a></li>
+                <li><a href="{{ route('resepsionis.registrasi.pemilik') }}" class="active">Registrasi Pemilik</a></li>
+                <li><a href="{{ route('resepsionis.registrasi.pet') }}">Registrasi Pet</a></li>
+                <li><a href="{{ route('resepsionis.registrasi.temudokter') }}">Registrasi Temu Dokter</a></li>
                 <li><a href="{{ route('login') }}" class="logout-btn">Logout</a></li>
           </ul>
         </aside>
         <main class="main-content">
-          <header class="main-header">
-            <h1>Daftar Role User</h1>
-          </header>
-          
-        
-    <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Role</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (!empty($roleUser))
-                @foreach ($roleUser as $index => $item)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $item ->user->nama}}</td>
-                        <td>{{ $item ->role->nama_role}}</td>
-                        <td>{{ $item -> status }}</td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="3" style="text-align:center;">Tidak ada data jenis hewan.</td>
-                </tr>
-             @endif
-        </tbody>
-    </table>
 
+          <section class="content">
+            <h2>Registrasi Pemilik Baru</h2>
+        </section>
+            {{-- <div class="form-container" style="margin-top: 80px;">
+                <h3>Formulir Registrasi Pemilik</h3>
+                <form method="post" class="form-user">
+                    <label>Nama Lengkap:</label>
+                    <input type="text" name="nama" required>
 
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
 
+                    <label>Password (default):</label>
+                    <input type="password" name="password" required>
+
+                    <label>Nomor WhatsApp:</label>
+                    <input type="text" name="no_wa" required>
+
+                    <label>Alamat:</label>
+                    <textarea name="alamat" rows="3" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required></textarea>
+
+                    <button type="submit" style="margin-top:15px;">Daftarkan Pemilik</button>
+                </form>
+            </div> --}}
+            
         </main>
       </div>
     </div>
 </body>
 </html>
-    
-
-
-    
-    
-
-
-
-    

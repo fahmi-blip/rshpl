@@ -106,9 +106,9 @@ class LoginController extends Controller
         switch ($userRole) {
             case 1: // Asumsi 1 = Administrator
                 return redirect()->route('admin.dashboard')->with('success', 'Login berhasil!');
-            case '2': // Asumsi 2 = Dokter
+            case 2: // Asumsi 2 = Dokter
                 return redirect()->route('dokter.dashboard')->with('success', 'Login berhasil!');
-            case '3': // Asumsi 3 = Perawat
+            case 3: // Asumsi 3 = Perawat
                 return redirect()->route('perawat.dashboard')->with('success', 'Login berhasil ');
             case 4: // Asumsi 4 = Resepsionis
                 return redirect()->route('resepsionis.dashboard')->with('success', 'Login berhasil!');
@@ -126,6 +126,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('success', 'Logout berhasil!');
+        return redirect('/login')->with('success', 'Logout berhasil!');
     }
 }

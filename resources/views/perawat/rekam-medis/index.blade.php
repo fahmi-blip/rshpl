@@ -204,66 +204,18 @@ td a.delete-btn:hover {
         <aside class="sidebar">
           <h2 class="sidebar-logo">RSHP</h2>
           <ul class="sidebar-menu">
-            <li><a href="{{ route('admin.dashboard') }}" >Dashboard</a></li>
-                <li><a href="{{ route('admin.jenis-hewan.index') }}" >Jenis Hewan</a></li>
-                <li><a href="{{ route('admin.pemilik.index') }}" >Pemilik</a></li>
-                <li><a href="{{ route('admin.ras-hewan.index') }}" >Ras Hewan</a></li>
-                <li><a href="{{ route('admin.kategori.index') }}" >Kategori</a></li>
-                <li><a href="{{ route('admin.kategori-klinis.index') }}" >Kategori Klinis</a></li>
-                <li><a href="{{ route('admin.tindakan-terapi.index') }}">Tindakan & Terapi</a></li>
-                <li><a href="{{ route('admin.user.index') }}">Manajemen User</a></li>
-                <li><a href="{{ route('admin.role.index') }}" >Manajemen Role</a></li>
-                <li><a href="{{ route('admin.pet.index') }}" >Data Hewan Peliharaan</a></li>
-                <li><a href="{{ route('admin.role-user.index') }}" class="active">Penetapan Role User</a></li>
+            <li><a href="{{ route('perawat.dashboard') }}" >Dashboard</a></li>
+                <li><a href="{{ route('perawat.rekam-medis.index') }}" class="active">Rekam Medis</a></li>
                 <li><a href="{{ route('login') }}" class="logout-btn">Logout</a></li>
           </ul>
         </aside>
         <main class="main-content">
-          <header class="main-header">
-            <h1>Daftar Role User</h1>
-          </header>
-          
-        
-    <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Role</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (!empty($roleUser))
-                @foreach ($roleUser as $index => $item)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $item ->user->nama}}</td>
-                        <td>{{ $item ->role->nama_role}}</td>
-                        <td>{{ $item -> status }}</td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="3" style="text-align:center;">Tidak ada data jenis hewan.</td>
-                </tr>
-             @endif
-        </tbody>
-    </table>
-
-
-
+    
+          <section class="content">
+            <h2>Rekam Medis</h2>
+          </section>
         </main>
       </div>
     </div>
 </body>
 </html>
-    
-
-
-    
-    
-
-
-
-    
