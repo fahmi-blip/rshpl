@@ -223,7 +223,7 @@ td a.delete-btn:hover {
             <h1>Daftar Ras Hewan</h1>
           </header>
           
-        
+        <a href="{{ route('admin.ras-hewan.create') }}" class="btn-add" style="margin-bottom: 20px;">Tambah Data Pet</a>
     <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>
             <tr>

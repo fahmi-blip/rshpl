@@ -222,7 +222,7 @@ td a.delete-btn:hover {
           <header class="main-header">
             <h1>Daftar User</h1>
           </header>
-
+<a href="{{ route('admin.user.create') }}" class="btn-add" style="margin-bottom: 20px;">Tambah Data Pet</a>
           
     <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>

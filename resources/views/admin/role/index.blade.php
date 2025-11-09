@@ -223,7 +223,7 @@ td a.delete-btn:hover {
             <h1>Daftar Role</h1>
           </header>
           
-        
+        <a href="{{ route('admin.role.create') }}" class="btn-add" style="margin-bottom: 20px;">Tambah Data Pet</a>
     
     <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>
