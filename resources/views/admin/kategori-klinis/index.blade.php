@@ -222,7 +222,9 @@ td a.delete-btn:hover {
           <header class="main-header">
             <h1>Daftar kategori-klinis</h1>
           </header>
-          
+          <a href="{{ route('admin.kategori-klinis.create') }}" class="btn-add" style="margin-bottom: 20px;">
+              Tambah Kategori
+          </a>
         <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>
             <tr>

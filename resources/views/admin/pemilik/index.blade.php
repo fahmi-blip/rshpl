@@ -220,9 +220,11 @@ td a.delete-btn:hover {
         </aside>
         <main class="main-content">
           <header class="main-header">
-            <h1>Daftar Pemilik/h1>
+            <h1>Daftar Pemilik</h1>
           </header>
-          
+          <a href="{{ route('admin.pemilik.create') }}" class="btn-add" style="margin-bottom: 20px;">
+              Tambah Kategori
+          </a>
         <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; width:90%;">
         <thead>
             <tr>

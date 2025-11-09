@@ -224,9 +224,9 @@ td a.delete-btn:hover {
           </header>
           <div>
             <form action="{{ route('admin.jenis-hewan.create') }}" method="GET" style="display: inline;">
-              <button type="submit" class="btn-add">
-                Tambah Jenis Hewan
-              </button>
+             <button class="btn-add" style="margin-bottom: 20px;">
+              Tambah Kategori
+            </button>
             </form>
         </div>
         

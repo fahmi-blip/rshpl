@@ -14,4 +14,5 @@ class KategoriKlinis extends Model
     public function tindakanTerapi(){
         return $this->hasMany(TindakanTerapi::class,'idkategori_klinis','idkategori_klinis');
     }
+    public $timestamps = false;
 }
