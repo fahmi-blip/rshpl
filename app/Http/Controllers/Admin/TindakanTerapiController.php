@@ -43,7 +43,7 @@ class TindakanTerapiController extends Controller
     // 3. Helper Validasi [cite: 1683-1701]
     protected function validateTindakanTerapi(Request $request, $id = null)
     {
-        $uniqueRule = $id ? 'unique:tindakan_terapi,kode,' . $id . ',idtindakan' : 'unique:tindakan_terapi,kode';
+        $uniqueRule = $id ? 'unique:kode_tindakan_terapi,kode,' . $id . ',idtindakan' : 'unique:kode_tindakan_terapi,kode';
 
         $rules = [
             'kode' => ['required', 'string', 'max:50', $uniqueRule],
@@ -66,9 +66,14 @@ class TindakanTerapiController extends Controller
     protected function createTindakanTerapi(array $data)
     {
         try {
-            return TindakanTerapi::create($data);
+            return TindakanTerapi::create([
+                'kode' => $data['kode'],
+                'deskripsi_tindakan_terapi' => $data['deskripsi_tindakan_terapi'],
+                'idkategori' => $data['idkategori'],
+                'idkategori_klinis' => $data['idkategori_klinis'],
+            ]);
         } catch (Exception $e) {
-            throw new Exception('Gagal menyimpan data tindakan terapi: ' . $e->getMessage());
+            throw new Exception('Gagal menyimpan data pet: ' . $e->getMessage());
         }
     }
 }

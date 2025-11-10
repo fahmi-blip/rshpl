@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
-    /**
-     * Menampilkan daftar pet
-     */
     public function index()
     {
         $pet = Pet::with('user', 'pemilik.user', 'rasHewan.jenisHewan')->get();
@@ -52,10 +49,6 @@ class PetController extends Controller
         }
     }
 
-    /**
-     * Helper Validasi Pet
-     * Sesuai Modul 11
-     */
     protected function validatePet(Request $request, $id = null)
     {
         $rules = [

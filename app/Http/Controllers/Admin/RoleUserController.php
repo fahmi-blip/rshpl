@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RoleUser;
 use App\Models\Role;
 use App\Models\User;
-use Exception; // Tambahkan ini
+use Exception; // Pastikan use Exception ada
 
 class RoleUserController extends Controller
 {
@@ -17,15 +17,27 @@ class RoleUserController extends Controller
         return view('admin.role-user.index', compact('roleUser'));
     }
 
-    // 1. Method untuk menampilkan form create
+    /**
+     * TAMPILKAN FORM CREATE
+     * (DIUBAH: Hanya mengambil user yang BELUM memiliki role)
+     */
     public function create()
     {
-        $roles = Role::all();
-        $users = User::all(); // Ambil user yang belum punya role? Untuk sementara ambil semua.
-        return view('admin.role-user.create', compact('roles', 'users'));
+        $role = Role::all();
+
+        // 1. Ambil semua ID user yang SUDAH terdaftar di tabel role_user
+        $existingUserIds = RoleUser::pluck('iduser')->all();
+
+        // 2. Ambil user yang ID-nya TIDAK ADA di daftar $existingUserIds
+        $user = User::whereNotIn('iduser', $existingUserIds)->get();
+
+        return view('admin.role-user.create', compact('role', 'user'));
     }
 
-    // 2. Method untuk menyimpan data [cite: 1661-1668]
+    /**
+     * SIMPAN DATA BARU
+     * (DIUBAH: Menambahkan ->withInput() pada catch block)
+     */
     public function store(Request $request)
     {
         try {
@@ -36,20 +48,20 @@ class RoleUserController extends Controller
                 ->with('success', 'Data Role User berhasil ditambahkan.');
         } catch (Exception $e) {
             return redirect()->back()
-                ->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
+                ->with('error', 'Gagal menyimpan data: ' . $e->getMessage())
+                ->withInput(); // <-- Tambahan penting
         }
     }
 
-    // 3. Helper Validasi [cite: 1683-1701]
+
     protected function validateRoleUser(Request $request, $id = null)
     {
-        // Asumsi 1 user hanya punya 1 role, maka iduser harus unique
         $uniqueRule = $id ? 'unique:role_user,iduser,' . $id . ',idrole_user' : 'unique:role_user,iduser';
 
         $rules = [
-            'iduser' => ['required', 'exists:users,iduser', $uniqueRule],
+            'iduser' => ['required', 'exists:user,iduser', $uniqueRule],
             'idrole' => 'required|exists:role,idrole',
-            'status' => 'required|string|max:50',
+            'status' => 'required','in:1,0'
         ];
 
         $messages = [
@@ -61,7 +73,6 @@ class RoleUserController extends Controller
         return $request->validate($rules, $messages);
     }
 
-    // 4. Helper Create Data [cite: 1707-1716]
     protected function createRoleUser(array $data)
     {
         try {
@@ -71,7 +82,7 @@ class RoleUserController extends Controller
                 'status' => $data['status'],
             ]);
         } catch (Exception $e) {
-            throw new Exception('Gagal menyimpan data role user: ' . $e->getMessage());
+            throw new Exception('Gagal menyimpan data pet: ' . $e->getMessage());
         }
     }
 }
