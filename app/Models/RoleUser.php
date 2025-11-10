@@ -9,7 +9,7 @@ class RoleUser extends Model
     protected $table = 'role_user';
     protected $primaryKey = 'idrole_user';
     protected $fillable = [
-        'status',
+        'iduser','idrole','status',
     ];
 
     public function user(){
@@ -18,4 +18,5 @@ class RoleUser extends Model
     public function role(){
         return $this->belongsTo(Role::class,'idrole','idrole');
     }
+    public $timestamps = false;
 }

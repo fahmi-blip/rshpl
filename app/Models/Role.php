@@ -14,4 +14,5 @@ class Role extends Model
     public function roleUser(){
         return $this->hasOne(RoleUser::class,'idrole','idrole');
     }
+    public $timestamps = false;
 }

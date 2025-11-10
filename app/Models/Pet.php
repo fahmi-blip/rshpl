@@ -13,6 +13,9 @@ class Pet extends Model
         'tanggal_lahir',
         'warna_tanda',
         'jenis_kelamin',
+        'idpemilik',
+        'idras_hewan',
+        'iduser',
     ];
     public function pemilik(){
         return $this->belongsTo(Pemilik::class, 'idpemilik', 'idpemilik');
@@ -23,4 +26,5 @@ class Pet extends Model
     public function user(){
         return $this->belongsTo(User::class,'iduser','iduser');
     }
+    public $timestamps = false;
 }

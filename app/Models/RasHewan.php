@@ -8,7 +8,7 @@ class RasHewan extends Model
 {
     protected $table = 'ras_hewan';
     protected $primaryKey = 'idras_hewan';
-    protected $fillable = ['nama_ras'];
+    protected $fillable = ['nama_ras', 'idjenis_hewan'];
 
     public function jenisHewan(){
         return $this->belongsTo(JenisHewan::class,'idjenis_hewan','idjenis_hewan');
@@ -16,4 +16,5 @@ class RasHewan extends Model
     public function pet(){
         return $this->hasMany(Pet::class,'idras_hewan','idras_hewan');
     }
+    public $timestamps = false;
 }

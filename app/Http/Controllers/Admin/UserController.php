@@ -40,7 +40,7 @@ class UserController extends Controller
     // 3. Helper Validasi [cite: 1683-1701]
     protected function validateUser(Request $request, $id = null)
     {
-        $uniqueRule = $id ? 'unique:users,email,' . $id . ',iduser' : 'unique:users,email';
+        $uniqueRule = $id ? 'unique:user,email,' . $id . ',iduser' : 'unique:user,email';
 
         $rules = [
             'nama' => 'required|string|max:255',
@@ -65,7 +65,7 @@ class UserController extends Controller
         try {
             return User::create([
                 'nama' => $data['nama'],
-                'email' => $data['email'],
+                'email' =>$data['email'],
                 'password' => Hash::make($data['password']),
             ]);
         } catch (Exception $e) {
