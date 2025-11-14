@@ -7,13 +7,18 @@ use Illuminate\Http\Request;
 use App\Models\JenisHewan;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 
 class JenisHewanController extends Controller
 {
     public function index()
     {
-        $jenisHewan = JenisHewan::all();
+        // $jenisHewan = JenisHewan::all();
+        $jenisHewan = Db::table('jenis_hewan')
+        ->select('idjenis_hewan', 'nama_jenis_hewan')
+        ->get();
+
         return view('admin.jenis-hewan.index', compact('jenisHewan'));
     }
     public function create()
@@ -59,9 +64,12 @@ class JenisHewanController extends Controller
     protected function createJenisHewan(array $data)
     {
         try {
-            return JenisHewan::create([
-                'nama_jenis_hewan' => $this->formatNamaJenisHewan($data['nama_jenis_hewan']),
-            ]);
+            // return JenisHewan::create([
+            //     'nama_jenis_hewan' => $this->formatNamaJenisHewan($data['nama_jenis_hewan']),
+            $jenisHewan = DB::table('jenis_hewan')->insert([
+                'nama_jenis_hewan' => $this->formatNamaJenisHewan($data['nama_jenis_hewan']),  
+        ]);
+        return $jenisHewan;
         } catch (\Exception $e) {
             throw new \Exception('Gagal menyimpan data jenis hewan: ' . $e->getMessage());
         }
