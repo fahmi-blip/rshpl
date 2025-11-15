@@ -202,7 +202,9 @@ td a.delete-btn:hover {
 </head>
 <body>
     <div class="dashboard-container">
-        <aside class="sidebar">
+@include('layouts.lte.sidebar')
+
+        {{-- <aside class="sidebar">
           <h2 class="sidebar-logo">RSHP</h2>
           <ul class="sidebar-menu">
             <li><a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a></li>
@@ -218,7 +220,7 @@ td a.delete-btn:hover {
                 <li><a href="{{ route('admin.role-user.index') }}">Penetapan Role User</a></li>
                 <li><a href="{{ route('login') }}" class="logout-btn">Logout</a></li>
           </ul>
-        </aside>
+        </aside> --}}
         <main class="main-content">
           <header class="main-header">
             <h1>Selamat Datang di Dashboard Admin</h1>
